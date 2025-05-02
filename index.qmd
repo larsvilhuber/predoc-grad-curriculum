@@ -1,8 +1,9 @@
 ---
-title: "Tutorial reproducibility"
+title: "Reproducibility in research – Ensuring the transparency and credibility of your work"
 author: 
   - "Lars Vilhuber"
-date: February 2025
+  - "Michael Stepner"
+date: May 26 2025
 ---
 
 ```{r config,include=FALSE}
@@ -46,8 +47,8 @@ QUALTRICS_DAY2 <- "SV_cNkhKL69K2Ob7o2"
 
 # Time when this was posted (discard anything before that)
 
-QUALTRICS_DAY2_STIME <- ymd_hms("2025-02-11 23:59:00")
-QUALTRICS_DAY2_ETIME <- ymd_hms("2025-03-20 23:59:00")
+QUALTRICS_DAY2_STIME <- ymd_hms("2025-04-30 23:59:00")
+QUALTRICS_DAY2_ETIME <- ymd_hms("2025-05-24 23:59:00")
 
 if (!dir.exists(here::here("data"))) {
   dir.create(here::here("data"))
@@ -55,6 +56,20 @@ if (!dir.exists(here::here("data"))) {
 ```
 
 ::: {.panel-tabset}
+
+## Details
+
+- May 26 (1:00 p.m. to 4:00 p.m.) 
+- May 27, 2025 (9:00 a.m. to 4:00 p.m.)
+
+Location: *DS-1520, [pavillon DS, UQAM](https://plancampus.uqam.ca/#pavillon/ds), 320, rue Sainte-Catherine Est, Montreal, Québec* (see details on last tab)
+
+Registration required, see [registration link](https://ecommerce.dexero.com/shopping/ciqss/ciqss/event/school_repro25/Detail.view).
+
+*Sponsored by [QICSS](https://ciqss.org)*, part of the [Canadian Economics Association meetings pre-program](https://www.economics.ca/cea2025).
+
+<img height="50px" src="https://ciqss.org/wp-content/uploads/2024/02/logo-ciqss-temp-1024x407.webp" alt="QICSS logo" />
+<img height="50px" src="https://www.economics.ca/resources/Pictures/full_logo_with_wordmark_II.svg" alt="CEA logo" />
 
 ## Follow along
 
@@ -69,27 +84,27 @@ plot(code)
 
 ## Day 1
 
-One of the following (or a linear combination):
 
-- [Setting yourself up for reproducibility](https://larsvilhuber.github.io/day1-tutorial/)
-- [How to correctly document a replication package](https://larsvilhuber.github.io/readme-presentation/)
-- [Reproducibility for LLM and AI](https://larsvilhuber.github.io/reproducibility-for-llm/presentation/)
-
+```{r, child=c(here::here('toc.md'))}	
+```
 
 
 
 ## Day 2
 
-One of the following (or a linear combination):
 
-- [Reproducibility when some data are confidential](https://labordynamicsinstitute.github.io/reproducibility-confidential/) 
-- [Advanced self-checking of reproducibility](https://larsvilhuber.github.io/self-checking-reproducibility/presentation/)
-- Preserving raw survey data
-  - <https://labordynamicsinstitute.github.io/replication-tutorial-2019/#/18>
-  - <https://labordynamicsinstitute.github.io/tutorial-data-sharing-archiving-2021/#/2> (possibly challenging)
+```{r, child=c(here::here('toc2.md'))}	
+```
+
 
 
 ## Survey for Day 2
+
+For part of Day 2, we have a choice:
+
+- [Reproducibility when some data are confidential](https://labordynamicsinstitute.github.io/reproducibility-confidential/) 
+- [Depositing a replication package]()
+- [Advanced self-checking of reproducibility](https://larsvilhuber.github.io/self-checking-reproducibility/presentation/)
 
 To identify what we should be speaking about on Day 2, please fill out this other survey:
 
@@ -100,15 +115,19 @@ To identify what we should be speaking about on Day 2, please fill out this othe
 ```{r downloaddata2,include=FALSE}
 # download data to local location
 
-data2.raw <- fetch_survey(surveyID = QUALTRICS_DAY2, verbose = TRUE) 
-data2 <- data2.raw |>
-        filter(Status != "Survey Preview") |>
-        filter(Consent == "I agree that my data will be used in the manner described.") |>
-        filter(StartDate > QUALTRICS_DAY2_STIME & EndDate < QUALTRICS_DAY2_ETIME) |>
-  # renaming variables
-  select(StartDate,EndDate,Status,Finished,RecordedDate,ResponseId,Consent,Preferred_topic,Degree,JEL_primary,
-         starts_with("JEL_secondary"),starts_with("Versioning_"))
-
+# if the Qualtrics API key is not set, we can't fetch the data
+if (Sys.getenv("QUALTRICS_API_KEY") != "") {
+  data2.raw <- fetch_survey(surveyID = QUALTRICS_DAY2, verbose = TRUE) 
+  data2 <- data2.raw |>
+          filter(Status != "Survey Preview") |>
+          filter(Consent == "I agree that my data will be used in the manner described.") |>
+          filter(StartDate > QUALTRICS_DAY2_STIME & EndDate < QUALTRICS_DAY2_ETIME) |>
+    # renaming variables
+    select(StartDate,EndDate,Status,Finished,RecordedDate,ResponseId,Consent,Preferred_topic,Degree,JEL_primary,
+          starts_with("JEL_secondary"),starts_with("Versioning_"))
+} else {
+  data2 <- data.frame()
+}
 
 ```
 
@@ -132,13 +151,18 @@ data2.table |> kable()
 ## Possible extra
 
 
-- Short presentation on concerns about ethics in data dissemination
-- **In-depth tutorial on the use of Docker for economics research**
-  - <https://codeocean.com>
-  - <https://github.com/codespaces>
+- Discussions on concerns about ethics in data dissemination (privacy, scraping, copyright, etc.)
+- [Reproducibility for LLM and AI](https://larsvilhuber.github.io/reproducibility-for-llm/presentation/)
 
 ```{r, child=c(here::here('99-links.md'))}
 ```
+
+## Map
+
+![UQAM Pavillon DS](https://plancampus.uqam.ca/fichiers/images/cartes_pavillons/DS.gif)
+
+
+
 
 :::
 

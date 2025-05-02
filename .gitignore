@@ -11,3 +11,6 @@ index.html
 .Rprofile
 data
 .Renviron
+.cache
+.config
+.local
