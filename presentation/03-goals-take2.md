@@ -36,25 +36,24 @@
 
 :::::{.columns}
 ::::{.column width="50%"}
-:::{.incremental}
 
 - 🐇 Authors at **conditional acceptance** 
 - 🐢 Authors at *submission*
 - 🐁 Authors at **beginning** of project
 
-:::
+
 ::::
 
 ::::{.column width="50%"}
 
-:::{.incremental}
+
 
 - 👴🏻👵🏽 Experienced researchers
 - 👶🏽👶🏻 Junior researchers
 - 👨‍🎓👩‍🎓 Ph.D. students
 - 🧒👦 Undergraduates 
 
-:::
+
 
 ::::
 :::::

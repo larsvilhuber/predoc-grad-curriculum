@@ -9,12 +9,6 @@
 - Take notes when you do things, not after
 - Use version control
 
-## Tools
-
-- Use [Template README](https://social-science-data-editors.github.io/template_README/)
-- Learn programming tricks that help streamline processing
-- Save files and tables programmatically
-
 
 ## Strategy
 

@@ -86,11 +86,6 @@ WEBSITE_SHORT <- paste0(GITHUB_REPOSITORY_PARTS[1], ".github.io/", GITHUB_REPOSI
 ```{r, child=c(here::here("presentation",'30-how.md'))}
 ```
 
-```{r, child=c(here::here("presentation",'40-where-to.md'))}
-```
-
-```{r, child=c(here::here("presentation",'75-thanks.md'))}
-```
 
 
 
@@ -117,6 +112,9 @@ WEBSITE_SHORT <- paste0(GITHUB_REPOSITORY_PARTS[1], ".github.io/", GITHUB_REPOSI
 
 # Appendix
 
+
+```{r, child=c(here::here("presentation",'40-where-to.md'))}
+```
 
 
 ```{r, child=c(here::here("presentation",'99-links.md'))}
