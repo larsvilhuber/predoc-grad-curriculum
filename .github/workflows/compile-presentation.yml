@@ -45,7 +45,7 @@ jobs:
         echo "QUALTRICS_BASE_URL=${{ secrets.QUALTRICS_BASE_URL }}" >> $GITHUB_ENV
         echo "QUALTRICS_API_KEY=${{ secrets.QUALTRICS_API_KEY }}" >> $GITHUB_ENV
           
-    - name: Render Quarto Project
+    - name: Render Landing Page
       env:
         QUARTO_PRINT_STACK: true
     #   uses: quarto-dev/quarto-actions/render@v2
@@ -55,28 +55,80 @@ jobs:
         echo "xxxxxxxxxx${QUALTRICS_BASE_URL}xxxxxxxxxx"
         test -z "${QUALTRICS_BASE_URL}" && echo "QUALTRICS_BASE_URL is not set" && exit 1
         quarto render  index.qmd --output-dir _html
+    - name: Render Landing Page
+      env:
+        QUARTO_PRINT_STACK: true
+    #   uses: quarto-dev/quarto-actions/render@v2
+    #   with:
+    #     path: ./presentation
+      run: |
+        quarto render presentation/presentation.qmd --output-dir _html
 
     - name: Upload Artifact
-      uses: actions/upload-pages-artifact@v3.0.1    
+      id: artifact-upload-step2
+      uses: actions/upload-artifact@v4
       with:
-        path: _html
-    
-  publish:
+          name: artifact-html
+          path: _html
+          retention-days: 1
+
+
+          # now make a PDF out of it
+  create-pdf:
     needs: compile-quarto
-    
-    # Grant GITHUB_TOKEN the permissions required to make a Pages deployment
-    permissions:
-      pages: write      # to deploy to Pages
-      id-token: write   # to verify the deployment originates from an appropriate source
-
-    # Deploy to the github-pages environment
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-
-    # Specify runner + deployment step
     runs-on: ubuntu-latest
     steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4 
+    - name: Download pages artifact
+      uses: actions/download-artifact@v4
+      with:
+        name: artifact-html
+        path: _html
+    - name: Check permissions
+      run: |
+        ls -la _html
+        chmod -R a+rwX _html
+        ls -la _html
+        
+    - name: Create PDF
+      uses: addnab/docker-run-action@v3
+      with:
+        image: astefanutti/decktape
+        options: -v ${{ github.workspace }}/_html/presentation:/slides 
+        run: |
+          node /decktape/decktape.js --chrome-path /usr/bin/chromium-browser --chrome-arg=--no-sandbox --chrome-arg=--disable-gpu presentation.html presentation.pdf
+
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: artifact-presentation-pdf
+        path: _html/presentation/presentation.pdf
+  deploy-all:
+    runs-on: ubuntu-22.04
+    needs: 
+      - compile-quarto
+      - create-pdf
+    steps:
+    # Pull down both artifacts
+    
+    - name: Download HTML Artifacts
+      uses: actions/download-artifact@v4
+      with:
+            path: .
+            pattern: artifact-html
+    - name: Download Pres PDF
+      uses: actions/download-artifact@v4
+      with:
+            path: .
+            pattern: artifact-presentation-pdf
+    # Adjust this to reflect what you are posting
+    - name: Move stuff
+      run: |
+          ls -lR
+          mv artifact-html website
+          mv artifact-presentation-pdf/presentation.pdf website/presentation.pdf
+    # Prepare the GitHub Pages action
+    - name: prepare GitHub Pages action
+      uses: actions/upload-pages-artifact@v3.0.1    
+      with:
+        path: ./website
+  

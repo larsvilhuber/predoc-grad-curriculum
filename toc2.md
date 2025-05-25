@@ -1,7 +1,7 @@
 - 9:00 Discussion of the "Very imperfect example"
 - 9:30 Documenting it all: [How to correctly document a replication package](https://larsvilhuber.github.io/readme-presentation/) (and why!)
 - 10:30 Break
-- 10:45 [How to run Stata!](03-how-to-run-stata.html) or R! (reproducibly)
+- 10:45 [How to run Stata!](presentation/index.htm#how-to-run-stata) or R! (reproducibly)
 - 11:00 Extra: How to install Stata packages
 - 11:15 **Topic A** (see Survey)
 
