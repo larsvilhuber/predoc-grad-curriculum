@@ -55,14 +55,14 @@ jobs:
         echo "xxxxxxxxxx${QUALTRICS_BASE_URL}xxxxxxxxxx"
         test -z "${QUALTRICS_BASE_URL}" && echo "QUALTRICS_BASE_URL is not set" && exit 1
         quarto render  index.qmd --output-dir _html
-    - name: Render Landing Page
+    - name: Render Presentation PDF
       env:
         QUARTO_PRINT_STACK: true
     #   uses: quarto-dev/quarto-actions/render@v2
     #   with:
     #     path: ./presentation
       run: |
-        quarto render presentation/presentation.qmd --output-dir _html
+        bash presentation/render_presentation.sh
 
     - name: Upload Artifact
       id: artifact-upload-step2

@@ -29,8 +29,6 @@ format:
           toggleNotesButton: true
     reveal_plugins: ["chalkboard"]
 
-
-
 ---
 
 
@@ -75,7 +73,6 @@ WEBSITE_SHORT <- paste0(GITHUB_REPOSITORY_PARTS[1], ".github.io/", GITHUB_REPOSI
 ```{r, child=c(here::here('toc2.md'))}
 ```
 
-
 ```{r, child=c(here::here("presentation",'01-goal.md'))}
 ```
 
@@ -97,7 +94,24 @@ WEBSITE_SHORT <- paste0(GITHUB_REPOSITORY_PARTS[1], ".github.io/", GITHUB_REPOSI
 
 
 
-# Thank you {background-image="images/lake-autumn.jpg" background-size="contain" background-position="bottom"}
+# Hands-on: A very imperfect example
+
+[Presentation of the example](01-very-imperfect-example.html)
+
+
+
+# Day 1 reproducibility
+
+## Day 1: How to not to organize your work
+
+[Link to Michael's slides]
+
+## Day 1: Setting yourself up for reproducibility
+
+[An approach to be reproducible from Day 1](https://larsvilhuber.github.io/day1-tutorial/)  
+
+
+# End of Day 1 {background-image="images/lake-autumn.jpg" background-size="contain" background-position="bottom"}
 
 
 
