@@ -1,4 +1,4 @@
-## Follow along
+## Follow along {.smaller}
 
 :::: {.columns}
 
@@ -19,4 +19,4 @@
 
 ::::
 
-[`r WEBSITE_SHORT`](`r WEBSITE_URL`)
+[`r WEBSITE_SHORT`](`r WEBSITE_URL`) ([PDF](presentation.pdf))
