@@ -106,7 +106,7 @@ WEBSITE_SHORT <- paste0(GITHUB_REPOSITORY_PARTS[1], ".github.io/", GITHUB_REPOSI
 
 ## Day 1: How to not to organize your work
 
-[Link to Michael's slides]
+[A tale of ineffective technical collaboration](https://utoronto-my.sharepoint.com/:p:/g/personal/michael_stepner_utoronto_ca/EQw-DkVwVvRKsFqMDR2poHYBzUCa4HeG02YJYB6fLqiUnA?e=EdbCxS)
 
 ## Day 1: Setting yourself up for reproducibility
 
