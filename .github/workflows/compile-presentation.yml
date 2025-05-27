@@ -13,6 +13,11 @@ on:
     # weekly run
     - cron: '3 7 * * 1'
   workflow_dispatch:
+    inputs:
+      create_deposit:
+        type: boolean
+        description: 'Create a Dataverse deposit'
+        default: false
 
 # This job installs dependencies, builds the book, and pushes it to `gh-pages`
 jobs:
@@ -78,7 +83,7 @@ jobs:
     needs: compile-quarto
     runs-on: ubuntu-latest
     steps:
-    - name: Download pages artifact
+    - name: Download quarto artifact
       uses: actions/download-artifact@v4
       with:
         name: artifact-html
@@ -151,3 +156,20 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4 
+  preserve:
+    needs: compile-quarto
+    runs-on: ubuntu-latest
+    if: ${{ github.event.inputs.create_deposit == 'true' }}
+    steps:
+    - name: Download quarto artifact
+      uses: actions/download-artifact@v4
+      with:
+        name: artifact-html
+        path: _html
+    - name: Send data to Dataverse 
+      uses: IQSS/dataverse-uploader@v1.6
+      with:
+        DATAVERSE_TOKEN: ${{secrets.DATAVERSE_TOKEN}}
+        DATAVERSE_SERVER: ${{secrets.DATAVERSE_SERVER}}
+        DATAVERSE_DATASET_DOI: ${{secrets.DATAVERSE_DATASET_DOI}}
+        GITHUB_DIR: _html/data

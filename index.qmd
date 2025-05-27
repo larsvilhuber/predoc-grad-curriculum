@@ -19,6 +19,11 @@ library(qrcode)
 # qualtRics secrets are read from the environment:
 # - QUALTRICS_API_KEY
 # - QUALTRICS_BASE_URL
+
+# We also need DATAVERSE secrets
+#      DATAVERSE_TOKEN: ${{secrets.DATAVERSE_TOKEN}}
+#      DATAVERSE_SERVER: https://demo.dataverse.org
+#      DATAVERSE_DATASET_DOI: do
 # Let's check that they are there:
 
 message(Sys.getenv("QUALTRICS_BASE_URL"))
@@ -103,7 +108,7 @@ plot(code)
 For part of Day 2, we have a choice:
 
 - [Reproducibility when some data are confidential](https://labordynamicsinstitute.github.io/reproducibility-confidential/) 
-- [Depositing a replication package]()
+- [Preserving raw survey data]()
 - [Advanced self-checking of reproducibility](https://larsvilhuber.github.io/self-checking-reproducibility/presentation/)
 
 To identify what we should be speaking about on Day 2, please fill out this other survey:
@@ -147,6 +152,15 @@ data2.table |> kable()
 }
 ```
 
+```{r preserve data, include=FALSE,echo=FALSE,message=FALSE}
+# Now save the data to a local file
+if (nrow(data2) > 0) {
+  write_csv(data2, here::here("data", "day2-survey.csv"))
+  saveRDS(data2, here::here("data", "day2-survey.rds"))
+} else {
+  # message("No data to save.")
+}
+```
 
 ## Possible extra
 

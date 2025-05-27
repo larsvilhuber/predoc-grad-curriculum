@@ -10,9 +10,12 @@ You may need an `.Renviron` file in the root of the project with the following c
 ```
 QUALTRICS_API_KEY='something here'
 QUALTRICS_BASE_URL='XXXX.qualtrics.com'
+DATAVERSE_TOKEN='somethingelse'
+DATAVERSE_SERVER='https://demo.dataverse.org'
+DATAVERSE_DATASET_DOI='doi:10.70122/xxx/xxxxx'
 ```
 
-where you should replace this with the true values. See the [Qualtrics API documentation](https://www.qualtrics.com/support/integrations/api-integration/overview/) for more information.
+where you should replace this with the true values. See the [Qualtrics API documentation](https://www.qualtrics.com/support/integrations/api-integration/overview/) for more information. For Dataverse uploader, see <https://github.com/IQSS/dataverse-uploader>.
 
 You should then set the GH Actions secrets with
 
