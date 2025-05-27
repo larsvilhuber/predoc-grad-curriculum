@@ -1,5 +1,5 @@
 
-- 13:00 Welcome   
+- 13:00 [Welcome](presentation/presentation.html)
 - 13:05 [Walkthrough](presentation/presentation.html#/walkthrough-of-the-agenda)     
 - 13:15 [Goals](presentation/presentation.html#/goals)                         
 - 13:30 Technical setup, possible team formation
