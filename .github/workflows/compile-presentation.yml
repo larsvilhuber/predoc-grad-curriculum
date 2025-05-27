@@ -179,7 +179,7 @@ jobs:
         name: artifact-data
         path: data
     - name: Send data to Dataverse 
-      uses: IQSS/dataverse-uploader@v1.6
+      uses: larsvilhuber/dataverse-uploader@v1.7
       with:
         DATAVERSE_TOKEN: ${{secrets.DATAVERSE_TOKEN}}
         DATAVERSE_SERVER: ${{secrets.DATAVERSE_SERVER}}
