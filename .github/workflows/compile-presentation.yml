@@ -123,7 +123,7 @@ jobs:
     needs: 
       - compile-quarto
       - create-pdf
-    if: ${{ github.event.inputs.refresh_website == 'true' }}
+    if: ${{ github.event.inputs.refresh_website == 'true' || github.event_name == 'push' }}
     steps:
     # Pull down both artifacts
     
@@ -151,7 +151,7 @@ jobs:
   
   publish:
     needs: deploy-all
-    if: ${{ github.event.inputs.refresh_website == 'true' }}
+    if: ${{ github.event.inputs.refresh_website == 'true' || github.event_name == 'push' }}
     # Grant GITHUB_TOKEN the permissions required to make a Pages deployment
     permissions:
       pages: write      # to deploy to Pages
