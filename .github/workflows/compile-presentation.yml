@@ -176,12 +176,12 @@ jobs:
     - name: Download quarto artifact
       uses: actions/download-artifact@v4
       with:
-        name: artifact-html
-        path: _html
+        name: artifact-data
+        path: data
     - name: Send data to Dataverse 
       uses: IQSS/dataverse-uploader@v1.6
       with:
         DATAVERSE_TOKEN: ${{secrets.DATAVERSE_TOKEN}}
         DATAVERSE_SERVER: ${{secrets.DATAVERSE_SERVER}}
         DATAVERSE_DATASET_DOI: ${{secrets.DATAVERSE_DATASET_DOI}}
-        GITHUB_DIR: _html/data
+        GITHUB_DIR: data
