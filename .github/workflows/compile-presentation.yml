@@ -18,6 +18,10 @@ on:
         type: boolean
         description: 'Create a Dataverse deposit'
         default: false
+      refresh_website:
+        type: boolean
+        description: 'Refresh the website'
+        default: true
 
 # This job installs dependencies, builds the book, and pushes it to `gh-pages`
 jobs:
@@ -69,14 +73,21 @@ jobs:
       run: |
         bash presentation/render_presentation.sh
 
-    - name: Upload Artifact
+    - name: Upload landing page Artifact
       id: artifact-upload-step2
       uses: actions/upload-artifact@v4
       with:
           name: artifact-html
           path: _html
           retention-days: 1
-
+    - name: Upload data artifact
+      id: artifact-upload-data
+      if: ${{ github.event.inputs.create_deposit == 'true' }}
+      uses: actions/upload-artifact@v4
+      with:
+          name: artifact-data
+          path: data
+          retention-days: 1
 
           # now make a PDF out of it
   create-pdf:
@@ -112,6 +123,7 @@ jobs:
     needs: 
       - compile-quarto
       - create-pdf
+    if: ${{ github.event.inputs.refresh_website == 'true' }}
     steps:
     # Pull down both artifacts
     
@@ -139,7 +151,7 @@ jobs:
   
   publish:
     needs: deploy-all
-    
+    if: ${{ github.event.inputs.refresh_website == 'true' }}
     # Grant GITHUB_TOKEN the permissions required to make a Pages deployment
     permissions:
       pages: write      # to deploy to Pages
