@@ -1,7 +1,7 @@
-- 9:00 Discussion of the "Very imperfect example"
+- 9:00 [Discussion](https://larsvilhuber.github.io/summer-school-qicss-2025/presentation/day2.html)) of the "Very imperfect example"
 - 9:30 Documenting it all: [How to correctly document a replication package](https://larsvilhuber.github.io/readme-presentation/) (and why!)
 - 10:30 Break
-- 10:45 [How to run Stata!](presentation/presentation.htm#how-to-run-stata) or R! (reproducibly)
+- 10:45 [How to run Stata!](presentation/presentation.html#how-to-run-stata) or R! (reproducibly)
 - 11:00 Extra: [How to install Stata packages](https://larsvilhuber.github.io/self-checking-reproducibility/12-environments-in-stata.html)
 - 11:15 **Topic A** (see Survey)
 

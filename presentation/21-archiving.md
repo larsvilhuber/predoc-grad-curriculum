@@ -1,16 +1,6 @@
----
-title: "Part 11: Creating a deposit"
-author: 
-  - "Lars Vilhuber"
-  - "Marie Connolly" 
-date: "`r Sys.Date()`"
----
-
-```{r, child=c('toc2.md')}
-```
 
 
-# Overview
+# Preserving raw survey data
 
 ## Overview
 
@@ -532,6 +522,7 @@ In decreasing order of "freely available"
 **Trusted Repositories**
 
 Journals and institutions have assessed a number of trusted repositories:
+
 - [CoreTrustSeal](https://www.coretrustseal.org/) has a certification process
 - [re3data.org](https://www.re3data.org/) lists research data repositories
 - [Nature](https://www.nature.com/sdata/policies/repositories), [F1000Research](https://f1000research.com/for-authors/data-guidelines#hosting), and [PLOS](https://journals.plos.org/plosone/s/data-availability) have lists of trusted repositories. 
@@ -542,6 +533,7 @@ Journals and institutions have assessed a number of trusted repositories:
 **Trusted Repositories**
 
 - These generally include at least the following:
+
   -  [Dryad Digital Repository](http://datadryad.org/)
   -  [figshare](http://figshare.com/)
   -  [Harvard Dataverse](https://dataverse.harvard.edu)
@@ -576,9 +568,9 @@ Journals and institutions have assessed a number of trusted repositories:
 
 ## Options for Preservation
 
-::: {.columns-2}
+::: {.columns}
 
-:::: {.column}
+:::: {.column width="50%"}
 
 Here: Sandbox for Zenodo
 
@@ -586,8 +578,7 @@ Here: Sandbox for Zenodo
 
 ::::
 
-:::: {.column}
-
+:::: {.column width="50%"}
 In one of my day jobs:
 
 <img alt="openicpsr" src="images/openicpsr-main-page.png" width="100%">
@@ -618,13 +609,33 @@ Let's go to Zenodo:
 > - Viewers: [https://sandbox.zenodo.org/](https://sandbox.zenodo.org/)
 
 
-# Do it now
+# Doing this automatically with Dataverse
+
+## Dataverses
+
+::: {.columns}
+
+:::: {.column width="50%"}
+
+Here: Demo Dataverse for Lars <https://demo.dataverse.org/dataverse/larstest>
+
+![](images/demo-dataverse-lars.png)
+
+::::
+
+:::: {.column width="50%"}
+
+For all of you: <https://borealisdata.ca/>
+
+![](images/borealis-landingpage.png)
 
 
-```{r, child=c('counter30.md')}
-```
+::::
 
-# Next
+:::
 
-```{r, child=c('toc2.md')}
-```
+## A tutorial of sorts
+
+- Demo Dataverse for Lars <https://demo.dataverse.org/dataverse/larstest>
+- [Code for uploading automatically](https://github.com/larsvilhuber/summer-school-qicss-2025)
+- Manually: `python ../dataverse-uploader/dataverse.py $DATAVERSE_TOKEN $DATAVERSE_SERVER $DATAVERSE_DATASET_DOI . -d data`

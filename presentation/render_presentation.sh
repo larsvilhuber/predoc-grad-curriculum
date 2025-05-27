@@ -8,3 +8,4 @@ fi
 [[ -z $QUARTO_OPTS ]] && QUARTO_OPTS="--output-dir _html"
 quarto render presentation/presentation.qmd $QUARTO_OPTS
 quarto render presentation/01-very-imperfect-example.qmd $QUARTO_OPTS
+quarto render presentation/day2.qmd $QUARTO_OPTS

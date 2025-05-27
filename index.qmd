@@ -108,7 +108,7 @@ plot(code)
 For part of Day 2, we have a choice:
 
 - [Reproducibility when some data are confidential](https://labordynamicsinstitute.github.io/reproducibility-confidential/) 
-- [Preserving raw survey data]()
+- [Preserving raw survey data](presentation/day2.html#preserving-raw-survey-data)
 - [Advanced self-checking of reproducibility](https://larsvilhuber.github.io/self-checking-reproducibility/presentation/)
 
 To identify what we should be speaking about on Day 2, please fill out this other survey:
