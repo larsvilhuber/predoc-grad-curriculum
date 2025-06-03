@@ -2,9 +2,10 @@ name: deploy-landing-page
 
 # Only run this when the master branch changes
 on:
-  push:
-    branches:
-    - main
+  # Deactivated:
+  # push:
+  #  branches:
+  #  - main
   #schedule:
     # hourly run
     #- cron: '3 * * * *'
